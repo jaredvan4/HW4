@@ -147,10 +147,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="HW4.cpp" />
+    <ClCompile Include="DRT.cpp" />
+    <ClCompile Include="PG4.cpp" />
+    <ClCompile Include="Tree.cpp" />
+    <ClCompile Include="TreeNode.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HW4.h" />
+    <ClInclude Include="Database.h" />
+    <ClInclude Include="DRT.h" />
+    <ClInclude Include="PG4.h" />
+    <ClInclude Include="Tree.h" />
+    <ClInclude Include="TreeNode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
