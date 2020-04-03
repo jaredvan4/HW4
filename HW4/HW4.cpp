@@ -16,7 +16,7 @@ void handleRequest(string input){
     if (input.substr(0, input.find(" ")) == "ADD"){
         cout << "Add requested!\n";
         int beg = input.find('"')+1;
-        string request = input.substr(beg);
+        string request = input.substr(beg, input.length() - beg - 1);
         cout << request << "\n";
     }
     else if (input == "PRINT") {
@@ -27,12 +27,14 @@ void handleRequest(string input){
     }
     else if (input.substr(0, input.find(" ")) == "REMOVE") {
         cout << "Remove requested!\n";
-        string request = input.substr(input.find('"') + 1, input.length() - 1);
+        int beg = input.find('"') + 1;
+        string request = input.substr(beg, input.length() - beg - 1);
         cout << request << "\n";
     }
     else if (input.substr(0, input.find(" ")) == "LOOKUP") {
         cout << "Lookup requested!\n";
-        string request = input.substr(input.find('"') + 1, input.length() - 1);
+        int beg = input.find('"') + 1;
+        string request = input.substr(beg, input.length() - beg - 1);
         cout << request << "\n";
     }
     else if (input == "EXIT") {
