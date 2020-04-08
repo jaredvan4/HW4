@@ -28,7 +28,6 @@ DRT* Tree::searchnode(string key) { //searches the tree for the given key
 
 string Tree::first() {
 
-
 }
 
 string Tree::last() { //last key in the tree (right all the way down)
