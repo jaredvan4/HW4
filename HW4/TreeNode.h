@@ -1,32 +1,43 @@
-#ifndef _TREE_
-#define _TREE_
+#ifndef _TREENODE_
+#define _TREENODE_
 
 #include <iostream>
 #include <string>
 #include <cstdlib>
-#include "TreeNode.h"
+#include "Tree.h"
 #include "DRT.h"
-#include "Database.h"
 using namespace std;
 
 class DRT;
-class TreeNode;
-class Database;
-class Tree : public Database {
+class Tree;
+class TreeNode {
 private:
-	TreeNode* root;
+	string k; string d;
+	TreeNode* left, * right, * parent;
+	Tree* t;
 public:
-	Tree(); //constructor
-	~Tree(); //destructor
-	DRT* add(string key, string data); //very similar to sample code
-	void setroot(TreeNode* r); //get method
-	DRT* searchnode(string key); //searches the tree for the given key
-	string first(); //first key in the tree (left all the way down)
-	string last(); //last key in the tree (right all the way down)
-	DRT* remove(string key); //removes an item from the list
-	DRT* search(string key); //Database search method
-	  //checks to see if we're searching on the empty string, if so builds a DRT with first() and last (), otherwise calls searchnode
-	DRT* modify(string key, string data); //Database modify method
+	TreeNode(string key, string data, TreeNode* l, TreeNode* r, TreeNode* p, Tree* T); //constructor
+	~TreeNode(); //destructor
+	DRT* add(string key, string data, string n, string p);
+	//similar to search; keeps nsf and psf
+	DRT* searchnode(string key, string n, string p);
+	//utilizes keeping track of next-so-far and prev-so-far
+	TreeNode* first(); //left all the down
+	TreeNode* last(); //right all the way down
+	string getk(); //get
+	string getd(); //get
+	TreeNode* getright(); //get
+	TreeNode* getleft(); //get
+	string next(); //right once, left all the way down (makes use of first ())
+	string prev(); //left once, right all the way down (makes use of last ())
+	DRT* remove(string key, string n, string p);
+	//similar to search; keeps track of nsf and psf
+	//just works its down to the tree to find the node to remove
+	//then calls remove ()
+	void remove(); //the physical removal (decides whether it's 0, 1, or 2-child case and possibly copies key and data values and physically removes the deleted node
+	void setparent(TreeNode* p); //set
+	void setleft(TreeNode* l); //set
+	void setright(TreeNode* r); //set
 };
 
 #endif
