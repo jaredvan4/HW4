@@ -55,7 +55,7 @@ string TreeNode::getk() { return k; }
 string TreeNode::getd() { return d; }
 TreeNode* TreeNode::getright() { return right; }
 TreeNode* TreeNode::getleft() { return left; }
-string TreeNode::next() {                   }
+string TreeNode::next() {             }
 string TreeNode::prev() {                   }
 
 DRT* TreeNode::remove(string key, string n, string p) {

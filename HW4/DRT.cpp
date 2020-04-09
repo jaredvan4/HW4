@@ -4,7 +4,7 @@ using namespace std;
 
 DRT::DRT(string d, string n, string p) {
 
-    data = d; next = n; prev = p;
+	data = d; next = n; prev = p;
 }
 
 string DRT::getdata() { return data; }

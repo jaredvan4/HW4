@@ -22,12 +22,12 @@ DRT* Tree::add(string key, string data) { //very similar to sample code
 }
 
 DRT* Tree::searchnode(string key) { //searches the tree for the given key
-
+   //root->searchnode(key);
 
 }
 
 string Tree::first() {
-
+    
 }
 
 string Tree::last() { //last key in the tree (right all the way down)
@@ -36,13 +36,18 @@ string Tree::last() { //last key in the tree (right all the way down)
 }
 
 DRT* Tree::remove(string key) { //removes an item from the list
-
+    searchnode(key);
 
 }
 
 DRT* Tree::search(string key) { //Database search method
       //checks to see if we're searching on the empty string, if so builds a DRT with first() and last (), otherwise calls searchnode
-
+    if (key.empty()) {
+        return  new DRT(key,first(), last());
+    }
+    else {
+        searchnode(key);
+    }
 
 }
 
