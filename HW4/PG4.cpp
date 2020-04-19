@@ -59,7 +59,7 @@ void RPrint() {
 }
 
 void AddCommand(string cmd) {
-
+    
 }
 
 void RemoveCommand(string cmd) {

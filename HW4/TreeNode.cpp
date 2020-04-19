@@ -17,7 +17,29 @@ TreeNode::~TreeNode() { //destructor
 }
 
 DRT* TreeNode::add(string key, string data, string n, string p) {
-
+	if (this->k == key) {
+		return new DRT(data,n,p);
+	}
+	if (this->k < key) {
+		//search left
+		if (left) {
+			return left->add(key, data, this->getk(), left->getk());	
+		}
+		else {
+			left = new TreeNode(key, "", nullptr, nullptr, this, this->t);
+			return new  DRT(left->getd(), nullptr, this->getk());
+		}
+	}
+	//else search right
+	else {
+		if (right) {
+			return 	right->add(key, data, this->getk(), right->getk());
+		}
+		else {
+			right = new TreeNode(key, "", nullptr, nullptr, this, this->t);
+			return new  DRT(right->getd(), nullptr, this->getk());
+		}
+	}
 
 
 
@@ -42,12 +64,23 @@ DRT* TreeNode::searchnode(string key, string n, string p) {
 
 }
 TreeNode* TreeNode::first() {//left all the down
+	if (left) {
+		return left->first();
+	}
+	else {
+		return this;
+	}
 
 
 }
 
 TreeNode* TreeNode::last() { //right all the way down
-
+	if (right) {
+		return right->last();
+	}
+	else {
+		return this;
+	}
 
 }
 
@@ -55,26 +88,28 @@ string TreeNode::getk() { return k; }
 string TreeNode::getd() { return d; }
 TreeNode* TreeNode::getright() { return right; }
 TreeNode* TreeNode::getleft() { return left; }
-string TreeNode::next() {             }
-string TreeNode::prev() {                   }
+
+//NOT DONE
+string TreeNode::next() { return ""; }
+string TreeNode::prev() { return ""; }
 
 DRT* TreeNode::remove(string key, string n, string p) {
+	//NOT DONE !
 	//similar to search; keeps track of nsf and psf
 	 //just works its down to the tree to find the node to remove
 	 //then calls remove ()
+	return new DRT("", "", "");
 
 }
 
-void TreeNode::remove() {
+void TreeNode::remove()
+{
 	//the physical removal (decides whether it's 0, 1, or 2-child case and possibly copies key and data values and physically removes the deleted node
 
 
 
 }
 
-
-
 void TreeNode::setparent(TreeNode* p) { parent = p; }
 void TreeNode::setleft(TreeNode* l) { left = l; }
 void TreeNode::setright(TreeNode* r) { right = r; }
-
