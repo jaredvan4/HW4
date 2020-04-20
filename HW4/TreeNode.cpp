@@ -122,19 +122,37 @@ DRT* TreeNode::remove(string key, string n, string p) {
 
 void TreeNode::remove(){
 	//the physical removal (decides whether it's 0, 1, or 2-child case and possibly copies key and data values and physically removes the deleted node
+	
+	// 0 child case
 	if (!left && !right) {
 		delete this;
 	}
+	//one child case
 	else if (left != NULL && right == NULL || right != NULL && left == NULL) {
-		if (right) {
-			// copy right 
-		}
-		else {
-			//copy left
+		//if node to be deleted is left child of parent
+		if ( parent->getleft()== this) {
+			//set my single child as left node of my parent
+			if (left) {
+				left->setparent(parent);
+				parent->setleft(left);
+				
+			}
+			else {
+				right->setparent(parent);
+				parent->setleft(right);
+			}
 		}
 	}
+	//2 child case
 	else if (left && right) {
-
+		// go right once, then left all the way down to find next node
+		//then copy all info from next node into "this" node (the one to be deleted)
+		 TreeNode *next = right->first();
+		 k = next->getk();
+		 d = next->getd();
+		 left = next->getleft();
+		 right = next->getright();
+		 next->remove();
 	}
 
 }
