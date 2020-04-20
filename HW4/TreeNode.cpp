@@ -18,12 +18,12 @@ TreeNode::~TreeNode() { //destructor
 
 DRT* TreeNode::add(string key, string data, string n, string p) {
 	if (this->k == key) {
-		return new DRT(data,n,p);
+		return new DRT(data, n, p);
 	}
 	if (this->k < key) {
 		//search left
 		if (left) {
-			return left->add(key, data, this->getk(), left->getk());	
+			return left->add(key, data, this->getk(), left->getk());
 		}
 		else {
 			left = new TreeNode(key, "", nullptr, nullptr, this, this->t);
@@ -46,7 +46,6 @@ DRT* TreeNode::add(string key, string data, string n, string p) {
 }
 
 DRT* TreeNode::searchnode(string key, string n, string p) {
-
 	if (k == key) {
 		string next, prev;
 		if (!right) next = n;
@@ -95,13 +94,13 @@ string TreeNode::prev() { return ""; }
 
 DRT* TreeNode::remove(string key, string n, string p) {
 	if (this->k == key) {
-		return new DRT(this->getd(),n,p);
+		return new DRT(this->getd(), n, p);
 		this->remove();
 	}
 	else {
 		if (k < key) {
 			if (right) {
-				return right->remove(key, n, k); 
+				return right->remove(key, n, k);
 				//k is now the psf
 			}
 			else {
@@ -121,13 +120,12 @@ DRT* TreeNode::remove(string key, string n, string p) {
 
 }
 
-void TreeNode::remove()
-{
+void TreeNode::remove(){
 	//the physical removal (decides whether it's 0, 1, or 2-child case and possibly copies key and data values and physically removes the deleted node
 	if (!left && !right) {
 		delete this;
 	}
-	else if (left != NULL && right == NULL || right!= NULL && left == NULL) {
+	else if (left != NULL && right == NULL || right != NULL && left == NULL) {
 		if (right) {
 			// copy right 
 		}

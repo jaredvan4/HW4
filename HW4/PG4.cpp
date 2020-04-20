@@ -59,8 +59,17 @@ void RPrint() {
 }
 
 void AddCommand(string cmd) {
-    if (!Studs->search(cmd)) {
-       
+    int q1, q2;
+    for (q1 = 0; cmd[q1] != '\"'; q1++);
+    for (q2 = q1 + 1; cmd[q2] != '\"'; q2++);
+    string k = cmd.substr(q1 + 1, q2 - q1 - 1);
+    DRT* R = Studs->search(k);
+    if (R->getdata() == "") {
+        Studs->modify(k, "1");
+    }
+    else {
+        string modify = to_string(stoi(R->getdata()) + 1);
+        Studs->modify(k,modify);
     }
 }
 
@@ -89,5 +98,15 @@ void RemoveCommand(string cmd) {
 }
 
 void LookupCommand(string cmd) {
-
+    int q1, q2;
+    for (q1 = 0; cmd[q1] != '\"'; q1++);
+    for (q2 = q1 + 1; cmd[q2] != '\"'; q2++);
+    string k = cmd.substr(q1 + 1, q2 - q1 - 1);
+    DRT* R = Studs->search(k);
+    if (R->getdata() == "") {
+        cout << "Before: " << R->getprev() << " After: " << R->getnext() << endl;
+    }
+    else {
+        cout << "Number of copies: " << R->getdata() << endl;
+    }
 }
