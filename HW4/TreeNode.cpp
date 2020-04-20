@@ -18,6 +18,7 @@ TreeNode::~TreeNode() { //destructor
 
 DRT* TreeNode::add(string key, string data, string n, string p) {
 	if (this->k == key) {
+		d = data;
 		return new DRT(data, n, p);
 	}
 	if (this->k < key) {

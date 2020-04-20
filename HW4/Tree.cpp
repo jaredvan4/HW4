@@ -25,17 +25,28 @@ DRT* Tree::add(string key, string data) { //very similar to sample code
 
 DRT* Tree::searchnode(string key) { //searches the tree for the given key
 	//not sure what to do when root is key
-	if (root->getk() == key) {
-		return new DRT(root->getd(),"","");
+	if (root == nullptr) {
+		return new DRT("", "", "");
 	}
 	else {
-		//if key > root's , go right
-		if (key > root->getk()) {
-			return root->getright()->searchnode(key, root->getright()->getk(), root->getk());
+		if (root->getk() == key) {
+			return new DRT(root->getd(), "", "");
 		}
-		//else go left
 		else {
-			return root->getleft()->searchnode(key, root->getleft()->getk(), root->getk());
+			//if key > root's , go right
+			if (key > root->getk()) {
+				if (root->getright() == nullptr) {
+					return new DRT("", "", "");
+				}
+				return root->getright()->searchnode(key, root->getright()->getk(), root->getk());
+			}
+			//else go left
+			else {
+				if (root->getleft() == nullptr) {
+					return new DRT("", "", "");
+				}
+				return root->getleft()->searchnode(key, root->getleft()->getk(), root->getk());
+			}
 		}
 	}
 }

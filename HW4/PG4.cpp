@@ -1,3 +1,4 @@
+//Jared VanEnkevort
 #include <iostream>
 #include <string>
 #include <cstdlib>
@@ -5,6 +6,7 @@
 #include "DRT.h"
 #include "PG4.h"
 using namespace std;
+//I'm having trouble adding more than one node to the tree, I throw a nullptr exception in line 31 of treenode's "add" method
 
 int main(int argc, char** argv) {
 
