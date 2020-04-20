@@ -51,10 +51,8 @@ string Tree::last() { //last key in the tree (right all the way down)
 }
 
 DRT* Tree::remove(string key) { //removes an item from the list
-	//UNFINISHED!
-	search(key);
-
-	return new DRT("", "", "");
+	return root->remove(key, "", root->getk());
+	
 }
 
 DRT* Tree::search(string key) { //Database search method

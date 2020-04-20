@@ -94,10 +94,29 @@ string TreeNode::next() { return ""; }
 string TreeNode::prev() { return ""; }
 
 DRT* TreeNode::remove(string key, string n, string p) {
+	if (this->k == key) {
+		return new DRT(this->getd(),n,p);
+		this->remove();
+	}
+	else {
+		if (k < key) {
+			if (right) {
+				return right->remove(key, n, k); 
+				//k is now the psf
+			}
+			else {
+				return new DRT("", n, k);
+			}
+		}
+		if (left) return left->remove(key, n, p);
+		return new DRT("", k, p);
+	}
 	//NOT DONE !
 	//similar to search; keeps track of nsf and psf
 	 //just works its down to the tree to find the node to remove
 	 //then calls remove ()
+
+
 	return new DRT("", "", "");
 
 }
@@ -105,8 +124,20 @@ DRT* TreeNode::remove(string key, string n, string p) {
 void TreeNode::remove()
 {
 	//the physical removal (decides whether it's 0, 1, or 2-child case and possibly copies key and data values and physically removes the deleted node
+	if (!left && !right) {
+		delete this;
+	}
+	else if (left != NULL && right == NULL || right!= NULL && left == NULL) {
+		if (right) {
+			// copy right 
+		}
+		else {
+			//copy left
+		}
+	}
+	else if (left && right) {
 
-
+	}
 
 }
 

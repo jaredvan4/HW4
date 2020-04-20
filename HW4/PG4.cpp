@@ -59,7 +59,9 @@ void RPrint() {
 }
 
 void AddCommand(string cmd) {
-    
+    if (!Studs->search(cmd)) {
+       
+    }
 }
 
 void RemoveCommand(string cmd) {
