@@ -1,3 +1,5 @@
+//Contains all the prototypes for everything present in DRT.cpp
+//Jared VanEnkevort
 #ifndef _DRT_
 #define _DRT_
 #include <string>

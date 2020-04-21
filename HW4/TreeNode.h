@@ -1,3 +1,5 @@
+//Contains all the prototypes for everything present in TreeNode.cpp
+//Jared VanEnkevort
 #ifndef _TREENODE_
 #define _TREENODE_
 
@@ -34,6 +36,7 @@ public:
 	//similar to search; keeps track of nsf and psf
 	//just works its down to the tree to find the node to remove
 	//then calls remove ()
+	void removeRoot();
 	void remove(); //the physical removal (decides whether it's 0, 1, or 2-child case and possibly copies key and data values and physically removes the deleted node
 	void setparent(TreeNode* p); //set
 	void setleft(TreeNode* l); //set

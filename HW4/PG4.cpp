@@ -1,4 +1,6 @@
 //Jared VanEnkevort
+// contains all the function def for all included in PG4.h
+
 #include <iostream>
 #include <string>
 #include <cstdlib>
@@ -6,8 +8,6 @@
 #include "DRT.h"
 #include "PG4.h"
 using namespace std;
-//If I try to add a node after removing one it breaks, It might have to do with the left and rights of parent nodes not being set properly after deletion?
-
 int main(int argc, char** argv) {
 
 	Studs = new Tree();

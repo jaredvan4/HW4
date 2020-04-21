@@ -1,3 +1,5 @@
+// contains all the function def for all included in Tree.h
+//Jared VanEnkevort
 #include <iostream>
 #include <string>
 #include <cstdlib>

@@ -1,3 +1,5 @@
+//Contains all the prototypes for everything present in PG4.cpp
+//Jared VanEnkevort
 #ifndef _PG4_
 #define _PG4_
 

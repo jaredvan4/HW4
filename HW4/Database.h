@@ -1,3 +1,5 @@
+//Contains all the prototypes for classes inheriting this header file
+//Jared VanEnkevort
 #ifndef _DATABASE_
 #define _DATABASE_
 

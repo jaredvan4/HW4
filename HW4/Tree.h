@@ -1,3 +1,5 @@
+//Contains all the prototypes for everything present in Tree.cpp
+//Jared VanEnkevort
 #ifndef _TREE_
 #define _TREE_
 
