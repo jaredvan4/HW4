@@ -35,11 +35,22 @@ DRT* Tree::searchnode(string key) { //searches the tree for the given key
 
 string Tree::first() {
 	//left all the way down
-	return root->first()->getk();
+	if (!root) {
+		return "Empty tree!\n";
+	}else{
+		return root->first()->getk();
+	}
+	
 }
 
 string Tree::last() { //last key in the tree (right all the way down)
-	return root->last()->getk();
+	if (!root) {
+		return "Empty tree!\n";
+	}
+	else {
+		return root->last()->getk();
+	}
+	
 
 }
 
