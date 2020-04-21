@@ -6,7 +6,7 @@
 #include "DRT.h"
 #include "PG4.h"
 using namespace std;
-//I'm having trouble adding more than one node to the tree, I throw a nullptr exception in line 31 of treenode's "add" method
+//If I try to add a node after removing one it breaks, It might have to do with the left and rights of parent nodes not being set properly after deletion?
 
 int main(int argc, char** argv) {
 
