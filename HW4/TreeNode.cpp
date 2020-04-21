@@ -27,8 +27,8 @@ DRT* TreeNode::add(string key, string data, string n, string p) {
 			return left->add(key, data, this->getk(), left->getk());
 		}
 		else {
-			left = new TreeNode(key, "", nullptr, nullptr, this, this->t);
-			return new  DRT(left->getd(), nullptr, this->getk());
+			this->setleft(new TreeNode(key, "", nullptr, nullptr, this, t));
+			return new  DRT(left->getd(), "", this->getk());
 		}
 	}
 	//else search right
@@ -37,8 +37,8 @@ DRT* TreeNode::add(string key, string data, string n, string p) {
 			return 	right->add(key, data, this->getk(), right->getk());
 		}
 		else {
-			right = new TreeNode(key, "", nullptr, nullptr, this, this->t);
-			return new  DRT(right->getd(), nullptr, this->getk());
+			this ->setright(new TreeNode(key, "", nullptr, nullptr, this, this->t));
+			return new  DRT(right->getd(), "", this->getk());
 		}
 	}
 
