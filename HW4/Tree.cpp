@@ -25,45 +25,27 @@ DRT* Tree::add(string key, string data) { //very similar to sample code
 
 DRT* Tree::searchnode(string key) { //searches the tree for the given key
 	//not sure what to do when root is key
-	if (root == nullptr) {
-		return new DRT("", "", "");
+	if (root) {
+		return root->searchnode(key, "", "");
+	}else{
+		return new DRT("","","");
 	}
-	else {
-		if (root->getk() == key) {
-			return new DRT(root->getd(), "", "");
-		}
-		else {
-			//if key > root's , go right
-			if (key > root->getk()) {
-				if (root->getright() == nullptr) {
-					return new DRT("", "", "");
-				}
-				return root->getright()->searchnode(key, root->getright()->getk(), root->getk());
-			}
-			//else go left
-			else {
-				if (root->getleft() == nullptr) {
-					return new DRT("", "", "");
-				}
-				return root->getleft()->searchnode(key, root->getleft()->getk(), root->getk());
-			}
-		}
-	}
+	
 }
 
 string Tree::first() {
-	//left all the way down 
-	return root->getleft()->getk();
+	//left all the way down
+	return root->first()->getk();
 }
 
 string Tree::last() { //last key in the tree (right all the way down)
-	return root->getright()->getk();
+	return root->last()->getk();
 
 }
 
 DRT* Tree::remove(string key) { //removes an item from the list
-	return root->remove(key, "", root->getk());
-	
+	return root->remove(key,"","");
+
 }
 
 DRT* Tree::search(string key) { //Database search method

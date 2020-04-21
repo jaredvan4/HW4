@@ -17,32 +17,39 @@ TreeNode::~TreeNode() { //destructor
 }
 
 DRT* TreeNode::add(string key, string data, string n, string p) {
-	if (this->k == key) {
+	if (k == key) {
 		d = data;
-		return new DRT(data, n, p);
+		string next;
+		string prev;
+		if (!right)
+			next = n;
+		else next = right->first()->getk();
+		if (!left)
+			prev = p;
+		else prev = left->last()->getk();
+		return new DRT(data, next, prev);
+		/*d = data;
+		return new DRT(data, n, p);*/
 	}
-	if (this->k < key) {
-		//search left
-		if (left) {
-			return left->add(key, data, this->getk(), left->getk());
-		}
-		else {
-			this->setleft(new TreeNode(key, "", nullptr, nullptr, this, t));
-			return new  DRT(left->getd(), "", this->getk());
-		}
-	}
-	//else search right
-	else {
+	if (k < key) {
 		if (right) {
-			return 	right->add(key, data, this->getk(), right->getk());
+			return right->add(key, data, n, k);
 		}
 		else {
-			this ->setright(new TreeNode(key, "", nullptr, nullptr, this, this->t));
-			return new  DRT(right->getd(), "", this->getk());
+			right = new TreeNode(key, data, NULL, NULL, NULL, t);
+			return new DRT("", n, k);
 		}
+
 	}
-
-
+	if (left) {
+		return left->add(key, data, k, p);
+	}
+	else {
+		left = new TreeNode(key, data, NULL, NULL, NULL, t);
+		return new DRT("", k, p);
+	}
+		
+	
 
 }
 
@@ -95,8 +102,10 @@ string TreeNode::prev() { return ""; }
 
 DRT* TreeNode::remove(string key, string n, string p) {
 	if (this->k == key) {
-		return new DRT(this->getd(), n, p);
+		DRT* tempD = new DRT(this->getd(), n, p);
 		this->remove();
+		return tempD;
+		
 	}
 	else {
 		if (k < key) {
@@ -117,13 +126,13 @@ DRT* TreeNode::remove(string key, string n, string p) {
 	 //then calls remove ()
 
 
-	return new DRT("", "", "");
+
 
 }
 
-void TreeNode::remove(){
+void TreeNode::remove() {
 	//the physical removal (decides whether it's 0, 1, or 2-child case and possibly copies key and data values and physically removes the deleted node
-	
+
 	// 0 child case
 	if (!left && !right) {
 		delete this;
@@ -131,12 +140,12 @@ void TreeNode::remove(){
 	//one child case
 	else if (left != NULL && right == NULL || right != NULL && left == NULL) {
 		//if node to be deleted is left child of parent
-		if ( parent->getleft()== this) {
+		if (parent->getleft() == this) {
 			//set my single child as left node of my parent
 			if (left) {
 				left->setparent(parent);
 				parent->setleft(left);
-				
+
 			}
 			else {
 				right->setparent(parent);
@@ -148,12 +157,12 @@ void TreeNode::remove(){
 	else if (left && right) {
 		// go right once, then left all the way down to find next node
 		//then copy all info from next node into "this" node (the one to be deleted)
-		 TreeNode *next = right->first();
-		 k = next->getk();
-		 d = next->getd();
-		 left = next->getleft();
-		 right = next->getright();
-		 next->remove();
+		TreeNode* next = right->first();
+		k = next->getk();
+		d = next->getd();
+		left = next->getleft();
+		right = next->getright();
+		next->remove();
 	}
 
 }
