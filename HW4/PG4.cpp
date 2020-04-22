@@ -8,6 +8,7 @@
 #include "DRT.h"
 #include "PG4.h"
 using namespace std;
+//main method program enters and exits from
 int main(int argc, char** argv) {
 
 	Studs = new Tree();
@@ -15,7 +16,7 @@ int main(int argc, char** argv) {
 	delete Studs;
 	return 0;
 }
-
+//handles identiying what commands are being inputted
 bool ProcessCommand() {
 
 	string cmd;
@@ -31,7 +32,7 @@ bool ProcessCommand() {
 }
 
 void Print() {
-
+	//Handles forward printing command
 	cout << "Printing list forwards:" << endl;
 	DRT* T = Studs->search("");
 	string k = T->getnext();
@@ -44,7 +45,7 @@ void Print() {
 	delete T;
 	cout << endl;
 }
-
+//Handles reverse print command
 void RPrint() {
 
 	cout << "Printing list backwards:" << endl;
@@ -59,7 +60,7 @@ void RPrint() {
 	delete T;
 	cout << endl;
 }
-
+//handles the add command
 void AddCommand(string cmd) {
 	int q1, q2;
 	for (q1 = 0; cmd[q1] != '\"'; q1++);

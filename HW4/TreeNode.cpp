@@ -17,9 +17,10 @@ TreeNode::~TreeNode() { //destructor
 	delete left;
 	delete right;
 }
-
+//adds a node to the tree and return a DRT
 DRT* TreeNode::add(string key, string data, string n, string p) {
 	if (k == key) {
+		DRT* temp = new DRT(d, n, p);
 		d = data;
 		string next;
 		string prev;
@@ -29,7 +30,9 @@ DRT* TreeNode::add(string key, string data, string n, string p) {
 		if (!left)
 			prev = p;
 		else prev = left->last()->getk();
-		return new DRT(data, next, prev);
+		return temp;
+		//return new DRT(data, next, prev);
+
 		/*d = data;
 		return new DRT(data, n, p);*/
 	}
@@ -54,7 +57,7 @@ DRT* TreeNode::add(string key, string data, string n, string p) {
 	
 
 }
-
+//checks if this is the the item being searched for, else decides which node to call add on next
 DRT* TreeNode::searchnode(string key, string n, string p) {
 	if (k == key) {
 		string next, prev;
@@ -72,6 +75,7 @@ DRT* TreeNode::searchnode(string key, string n, string p) {
 	return new DRT("", k, p);
 
 }
+
 TreeNode* TreeNode::first() {//left all the down
 	if (left) {
 		return left->first();
@@ -102,6 +106,7 @@ TreeNode* TreeNode::getleft() { return left; }
 string TreeNode::next() { return ""; }
 string TreeNode::prev() { return ""; }
 
+//decides if this is the key to remove, else decides which node  will have remove called next
 DRT* TreeNode::remove(string key, string n, string p) {
 	if (this->k == key) {
 		if (!parent) {
@@ -112,8 +117,7 @@ DRT* TreeNode::remove(string key, string n, string p) {
 		}
 		DRT* tempD = new DRT(this->getd(), n, p);
 		this->remove();
-		return tempD;
-		
+		return tempD;	
 	}
 	else {
 		if (k < key) {
@@ -132,10 +136,6 @@ DRT* TreeNode::remove(string key, string n, string p) {
 	//similar to search; keeps track of nsf and psf
 	 //just works its down to the tree to find the node to remove
 	 //then calls remove ()
-
-
-
-
 }
 
 void TreeNode::removeRoot() {
@@ -221,7 +221,7 @@ void TreeNode::remove() {
 	}
 
 }
-
+//sets different fields of this node
 void TreeNode::setparent(TreeNode* p) { parent = p; }
 void TreeNode::setleft(TreeNode* l) { left = l; }
 void TreeNode::setright(TreeNode* r) { right = r; }
