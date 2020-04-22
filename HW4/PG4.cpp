@@ -68,10 +68,12 @@ void AddCommand(string cmd) {
 	DRT* R = Studs->search(k);
 	if (R->getdata() == "") {
 		Studs->modify(k, "1");
+		cout << "one copy of " << k << " has been added to the library!" << endl;
 	}
 	else {
 		string modify = to_string(stoi(R->getdata()) + 1);
 		Studs->modify(k, modify);
+		cout << "one copy of " << k << " has been added to the library!" << endl;
 	}
 }
 
@@ -106,7 +108,22 @@ void LookupCommand(string cmd) {
 	string k = cmd.substr(q1 + 1, q2 - q1 - 1);
 	DRT* R = Studs->search(k);
 	if (R->getdata() == "") {
-		cout << "Before: " << R->getprev() << " After: " << R->getnext() << endl;
+		string before;
+		string after;
+		if (R->getnext() == "") {
+			after = "end of the list";
+		}
+		else {
+			after = R->getnext();
+		}
+		if (R->getprev() == "") {
+			before = "beggining of the list";
+		}
+		else {
+			before = R->getprev();
+		}
+
+		cout << k<< "does not exist!\n "<< "It would fall between  " << before << " and " << after << endl;
 	}
 	else {
 		cout << "Number of copies: " << R->getdata() << endl;

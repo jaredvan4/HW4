@@ -161,8 +161,6 @@ void TreeNode::removeRoot() {
 		TreeNode* next = right->first();
 		k = next->getk();
 		d = next->getd();
-		left = next->getleft();
-		right = next->getright();
 		next->remove();
 	}
 }
@@ -195,6 +193,18 @@ void TreeNode::remove() {
 				parent->setleft(right);
 			}
 		}
+		else {
+			//if  node to be delted is right child
+			if (left) {
+				left->setparent(parent);
+				parent->setright(left);
+
+			}
+			else {
+				right->setparent(parent);
+				parent->setright(right);
+			}
+		}
 	}
 	//2 child case
 	else if (left && right) {
@@ -203,8 +213,8 @@ void TreeNode::remove() {
 		TreeNode* next = right->first();
 		k = next->getk();
 		d = next->getd();
-		left = next->getleft();
-		right = next->getright();
+		/*left = next->getleft();
+		right = next->getright();*/
 		next->remove();
 	}
 
