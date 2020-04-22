@@ -1,5 +1,6 @@
 //Jared VanEnkevort
 // contains all the function def for all included in PG4.h
+//I addded comments and I beleive I fixed returning old data from add &remove
 
 #include <iostream>
 #include <string>
