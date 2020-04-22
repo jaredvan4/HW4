@@ -148,9 +148,11 @@ void TreeNode::removeRoot() {
 	//one child case
 	else if (left != NULL && right == NULL || right != NULL && left == NULL) {
 		if (left) {
+			left->setparent(nullptr);
 			t->setroot(left);
 		}
 		else {
+			right->setparent(nullptr);
 			t->setroot(right);
 		}
 	}
